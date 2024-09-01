@@ -1,25 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import CameraComponent from './pages/camera';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CameraComponent/>
     </div>
   );
 }
 
 export default App;
+
+
+
+// import React, { useState } from "react";
+// import GroupSidebar from "./pages/GroupSidebar";
+// import CameraComponent from "./pages/camera";
+
+// const App = () => {
+//   const [selectedGroup, setSelectedGroup] = useState(null);
+
+//   const handleGroupSelect = (groupName) => {
+//     setSelectedGroup(groupName);
+//   };
+
+//   return (
+//     <div>
+//       <GroupSidebar onGroupSelect={handleGroupSelect} />
+//       <CameraComponent selectedGroup={selectedGroup} />
+//     </div>
+//   );
+// };
+
+// export default App;
