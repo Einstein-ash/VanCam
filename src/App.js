@@ -92,9 +92,9 @@ const App = () => {
         <Route path="/" element={<LoginButton />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         {/* <Route path="/camera" element={<CameraComponent />} /> */}
-        <Route path="/camera/:albumId" element={<CameraComponent />} />
+        <Route path="/camera/:albumId/:title" element={<CameraComponent />} />
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/upload_test" element={<UploadTest />} />
+        {/* <Route path="/upload_test" element={<UploadTest />} /> */}
       </Routes>
     </Router>
   );
