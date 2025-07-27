@@ -91,9 +91,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LoginButton />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/profile" element={<UserProfile />} />
         {/* <Route path="/camera" element={<CameraComponent />} /> */}
         <Route path="/camera/:albumId/:title" element={<CameraComponent />} />
-        <Route path="/profile" element={<UserProfile />} />
         {/* <Route path="/upload_test" element={<UploadTest />} /> */}
       </Routes>
     </Router>

@@ -11,7 +11,7 @@ const AuthCallback = () => {
     const userData = query.get('user');
 
     if (userData) {
-      // Store data in localStorage
+      // Store data in localStorage 
       localStorage.setItem('userData', userData);
 
       // Navigate to the UserProfile component

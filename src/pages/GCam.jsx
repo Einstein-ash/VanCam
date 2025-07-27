@@ -916,8 +916,8 @@ const CameraComponent = () => {
   const shareTokenRef = useRef(null);
 
 
-  // const Base_URL = "http://localhost:5000"
-  const Base_URL = 'https://van-cam-back.vercel.app'
+  const Base_URL = "http://localhost:5000"
+  // const Base_URL = 'https://van-cam-back.c.app'
 
 
   const videoConstraints = {
@@ -945,6 +945,10 @@ const CameraComponent = () => {
 
       const data = await response.json();
       setAlbumImages(data.mediaItems || []);
+
+
+      console.log("alubm iamges -----------");
+      console.log(data);
     } catch (error) {
       console.error('Error fetching media items:', error);
     }
@@ -1126,7 +1130,8 @@ const CameraComponent = () => {
         <button className="capture-btn" onClick={captureImage}>Capture Photo</button>
       </div>
 
-      <h3 className="album-title">Images in Album</h3>
+
+      {/* <h3 className="album-title">Images in Album</h3>
       <div className="album-grid">
         {albumImages.length > 0 ? (
           albumImages.map((image) => (
@@ -1136,8 +1141,40 @@ const CameraComponent = () => {
           <p className="no-images">No images found.</p>
         )}
       </div>
+    </div> */}
+
+{/* ------here below is edited ------------ */}
+      <h3 className="album-title">Images in Album</h3>
+      <div className="album-grid">
+        {albumImages.length > 0 ? (
+          albumImages.map((item) => (
+            item.mimeType.startsWith("video/") ? (
+              <video key={item.id} className="album-video" controls>
+                <source src={`${item.baseUrl}=dv`} type={item.mimeType} />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img 
+                key={item.id} 
+                className="album-image" 
+                src={item.baseUrl} 
+                alt={item.filename} 
+                onError={(e) => e.target.style.display = 'none'} 
+              />
+            )
+          ))
+        ) : (
+          <p className="no-images">No images found.</p>
+        )}
+      </div>
+
+
+{/* here above is edited ----------- */}
     </div>
   );
 };
 
 export default CameraComponent;
+
+
+

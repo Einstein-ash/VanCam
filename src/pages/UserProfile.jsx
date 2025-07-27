@@ -374,8 +374,8 @@ const UserProfile = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const Base_URL = 'http://localhost:5000'
-  const Base_URL = 'https://van-cam-back.vercel.app'
+  const Base_URL = 'http://localhost:5000'
+  // const Base_URL = 'https://van-cam-back.vercel.app'
 
   useEffect(() => {
     let token = "";
@@ -390,17 +390,18 @@ const UserProfile = () => {
       const userData = localStorage.getItem('userData');
       const accessToken = JSON.parse(userData).accessToken;
 
-      try {
+      try { 
         const response = await fetch(`${Base_URL}/albums`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
         });
+        
         const data = await response.json();
         setAlbums(data.albums || []);
       } catch (error) {
-        console.error('Error fetching albums:', error);
+        console.error('Error fetching albums :', error.message);
       }
     };
     
@@ -414,14 +415,14 @@ const UserProfile = () => {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
-        });
+        }); 
         const data = await response.json();
         setSharedAlbums(data.sharedAlbums || []);
       } catch (error) {
         console.error('Error fetching shared albums:', error);
       }
-    };
-
+    }; 
+ 
     fetchAlbums();
     fetchSharedAlbums();
   }, [location.search]);
@@ -545,7 +546,7 @@ const UserProfile = () => {
           {albums.map((album) => (
             <li key={album.id}>
               {album.title}
-              <button onClick={() => handleFetchMediaItems(album.id)}>View Images</button>
+              {/* <button onClick={() => handleFetchMediaItems(album.id)}>View Images</button> */}
               <Link to={`/camera/${album.id}/${album.title}`}>
                 <button className ='open_cam'>Open Camera</button>
               </Link>
@@ -567,7 +568,7 @@ const UserProfile = () => {
           {sharedalbums.map((album) => (
             <li key={album.id}>
               {album.title}
-              <button onClick={() => handleFetchMediaItems(album.id)}>View Images</button>
+              {/* <button onClick={() => handleFetchMediaItems(album.id)}>View Images</button> */}
               <Link to={`/camera/${album.id}/${album.title}`}>
                 <button className='open_cam'>Open Camera</button>
               </Link>
