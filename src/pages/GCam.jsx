@@ -928,6 +928,7 @@ const CameraComponent = () => {
 
   const toggleCamera = () => {
     setFacingMode((prev) => (prev === 'user' ? 'environment' : 'user'));
+    alert(facingMode);
   };
 
   let authToken = "";
