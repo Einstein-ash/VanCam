@@ -82,7 +82,7 @@ import LoginButton from './pages/Login';
 import UserProfile from './pages/UserProfile';
 import AuthCallback from './pages/AuthcallBack';
 import CameraComponent from './pages/GCam';
-import UploadTest from './pages/UploadTest';
+// import UploadTest from './pages/UploadTest';
 
 
 const App = () => {
