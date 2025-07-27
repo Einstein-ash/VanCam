@@ -922,14 +922,14 @@ const CameraComponent = () => {
 
 
   const videoConstraints = {
-    // facingMode: 'user', // Front-facing camera
+    facingMode: 'user', // Front-facing camera
     // facingMode:'user', // Front-facing camera
-    facingMode: { exact: "environment" }
+    // facingMode: { exact: "environment" }
   };
 
   const toggleCamera = () => {
     setFacingMode((prev) => (prev === 'user' ? 'environment' : 'user'));
-    alert(facingMode);
+    // alert(facingMode);
   };
 
   let authToken = "";
@@ -1133,7 +1133,6 @@ const CameraComponent = () => {
           screenshotFormat="image/png"
           videoConstraints={videoConstraints}
           className="webcam-feed"
-           videoProps={{ autoPlay: true, muted: true, playsInline: true }}
         />
         <br />
         <button className="capture-btn" onClick={captureImage}>Capture Photo</button>

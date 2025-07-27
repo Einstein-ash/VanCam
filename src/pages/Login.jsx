@@ -1,5 +1,5 @@
 import React from 'react';
-
+import  "./login.css"
 const LoginButton = () => {
 
   const Base_URL = 'https://van-cam-back.vercel.app'
@@ -10,9 +10,11 @@ const LoginButton = () => {
   };
 
   return (
-    <button onClick={handleLogin}>
-      Log in with Google
-    </button>
+    <div className='main_login_container'>
+      <button onClick={handleLogin}>
+        Log in with Google
+      </button>
+    </div>
   );
 };
 
