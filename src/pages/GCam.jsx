@@ -922,9 +922,9 @@ const CameraComponent = () => {
 
 
   const videoConstraints = {
-    facingMode: 'user', // Front-facing camera
+    // facingMode: 'user', // Front-facing camera
     // facingMode:'user', // Front-facing camera
-    // facingMode: { exact: "environment" }
+    facingMode: { exact: "environment" }
   };
 
   const toggleCamera = () => {
