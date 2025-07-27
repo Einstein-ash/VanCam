@@ -905,6 +905,7 @@ const CameraComponent = () => {
 
   const webcamRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
+  const [facingMode, setFacingMode] = useState('user');
   const [albumImages, setAlbumImages] = useState([]);
   const [uploadQueue, setUploadQueue] = useState([]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -921,7 +922,12 @@ const CameraComponent = () => {
 
 
   const videoConstraints = {
-    facingMode: 'user', // Front-facing camera
+    // facingMode: 'user', // Front-facing camera
+    facingMode: facingMode, // Front-facing camera
+  };
+
+  const toggleCamera = () => {
+    setFacingMode((prev) => (prev === 'user' ? 'environment' : 'user'));
   };
 
   let authToken = "";
@@ -1128,6 +1134,8 @@ const CameraComponent = () => {
         />
         <br />
         <button className="capture-btn" onClick={captureImage}>Capture Photo</button>
+
+        <button onClick={toggleCamera}>Toggle Cam</button>
       </div>
 
 
