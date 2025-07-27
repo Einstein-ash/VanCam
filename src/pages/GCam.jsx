@@ -923,7 +923,8 @@ const CameraComponent = () => {
 
   const videoConstraints = {
     // facingMode: 'user', // Front-facing camera
-    facingMode:'user', // Front-facing camera
+    // facingMode:'user', // Front-facing camera
+    facingMode: { exact: "environment" }
   };
 
   const toggleCamera = () => {
@@ -1132,6 +1133,7 @@ const CameraComponent = () => {
           screenshotFormat="image/png"
           videoConstraints={videoConstraints}
           className="webcam-feed"
+           videoProps={{ autoPlay: true, muted: true, playsInline: true }}
         />
         <br />
         <button className="capture-btn" onClick={captureImage}>Capture Photo</button>
@@ -1159,7 +1161,7 @@ const CameraComponent = () => {
           albumImages.map((item) => (
             item.mimeType.startsWith("video/") ? (
               <video key={item.id} className="album-video" controls>
-                <source src={`${item.baseUrl}=dv`} type={item.mimeType} />
+                {/* <source src={`${item.baseUrl}=dv`} type={item.mimeType} /> */}
                 Your browser does not support the video tag.
               </video>
             ) : (
