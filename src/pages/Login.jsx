@@ -11,9 +11,21 @@ const LoginButton = () => {
 
   return (
     <div className='main_login_container'>
-      <button onClick={handleLogin}>
+
+      <button class="button" onClick={handleLogin}>
+          <div class="wrap">
+            <p>
+              <span>✧</span>
+              <span>✦</span>
+              Log in with Google
+            </p>
+          </div>
+</button>
+
+
+      {/* <button onClick={handleLogin}>
         Log in with Google
-      </button>
+      </button> */}
     </div>
   );
 };
