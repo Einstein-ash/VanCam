@@ -359,7 +359,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { useLocation ,useNavigate, Link } from 'react-router-dom';
+import { useLocation ,useNavigate, Link, resolvePath } from 'react-router-dom';
 import './UserProfile.css'; // Ensure to import the CSS file
 
 const UserProfile = () => {
@@ -380,6 +380,7 @@ const UserProfile = () => {
   useEffect(() => {
     let token = "";
     const data = localStorage.getItem('userData');
+
     if (data) {
       setUserData(JSON.parse(data));
       token = JSON.parse(data).accessToken;
@@ -506,6 +507,14 @@ const UserProfile = () => {
     }
   };
 
+  const handleLogout = async ()=>{
+    localStorage.clear();
+    console.log("logout");
+    
+    await new Promise((res) => setTimeout(res,1000));
+    navigate("/");
+  }
+
   if (!userData) {
     return <div>Loading...</div>;
   }
@@ -516,7 +525,11 @@ const UserProfile = () => {
         <img src={userData.photos[0].value} alt="Profile" className="profile-pic" />
         <h1 className="user-name">{userData.name.givenName} {userData.name.familyName}</h1>
         <p className="user-email"><strong>Email:</strong> {userData.emails[0].value}</p>
+
+        <button className='logout_btn' onClick={handleLogout}>Logout</button>
+
       </div>
+
       
       <div className="album-actions">
         <div className="album-creation">
